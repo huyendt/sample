@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.telsoft.outsourcing</groupId>
+	<artifactId>sample</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>sample</name>
+	<description>Sample Project use Maven</description>
+
+	<!-- properties for project -->
+	<properties>
+		<!-- <junit.version>4.11</junit.version> -->
+		<!-- <jdk.version>1.7</jdk.version> -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit.version>4.11</junit.version>
+	</properties>
+
+	<!-- define repositories for dependencies -->
+
+	<repositories>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>http://repo.maven.apache.org/maven2</url>
+		</repository>
+
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>tls_central</id>
+			<name>Telsoft Central Repository</name>
+			<url>http://10.10.10.8:8081/nexus/content/repositories/tls_central/</url>
+		</repository>
+	</repositories>
+
+	<!-- define repositories for plugin -->
+	<pluginRepositories>
+		<pluginRepository>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>http://repo.maven.apache.org/maven2</url>
+		</pluginRepository>
+
+		<pluginRepository>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>tls_central</id>
+			<name>Telsoft Central Repository</name>
+			<url>http://10.10.10.8:8081/nexus/content/repositories/tls_central/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<!-- define repositories for distribution -->
+	<distributionManagement>
+		<!-- Releases repository -->
+		<repository>
+			<id>deployment</id>
+			<name>Internal Releases</name>
+			<url>http://10.10.10.8:8081/nexus/content/repositories/tls_releases/</url>
+		</repository>
+
+		<!-- Snapshot repository -->
+		<snapshotRepository>
+			<id>deployment</id>
+			<name>Internal Releases</name>
+			<url>http://10.10.10.8:8081/nexus/content/repositories/tls_snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>			
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>	
+	</dependencyManagement>
+	
+  <modules>
+    <module>samplejar</module>
+    <module>samplewar</module>
+  </modules>
+</project>
